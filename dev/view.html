@@ -1,0 +1,59 @@
+<h1>{{$root._path}}</h1>
+<h2>{{$root._templateUrl}}</h2>
+<div>
+  <ul>
+    <li>{{$root._routeName}}</li>
+    <li>{{$root._controller}}</li>
+  </ul>
+</div>
+
+
+<!--<div ng-if="$root._controller == 'devCtrl'" style="height: 250px; border: 2px solid red">-->
+<!-- sort-fn="sortMyList" bottom-fn="myListOnBottom"  -->
+<!--<novice-list columns="myColumns" ng-model="myList" table-class="'table-bordered table-hover bordered highlight'">
+</novice-list>
+</div>-->
+
+<div ng-if="$root._controller == 'devCtrl'" style="border: 2px solid red" class="col-sm-12">
+  <!-- sort-fn="sortMyList" bottom-fn="myListOnBottom"  -->
+
+<novice-list-xhr
+  xhr="'iotfactory:countries'"
+  columns="countriesCols"
+  buttons="myButtons"
+  hide-filters="false"
+  query-search-fn="querySearchFn"
+  table-height="300"
+  ><!-- xhr-sort -->
+</novice-list-xhr>
+</div>
+
+
+<div class="card sticky-action col-sm-4 col-md-3">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="https://s-media-cache-ak0.pinimg.com/736x/f3/4f/73/f34f732fccc0b79a3ec623fd747f2f66.jpg">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+      <p><a href="#">This is a link</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+      <table>
+      <tr>
+        <td>Category</td>
+      </tr>
+      <tr>
+        <td>Etat</td>
+      </tr>
+      <tr>
+        <td>Prix</td>
+      </tr>
+      <tr>
+        <td>in stock</td>
+      </tr>
+      </table>
+    </div>
+    <div class="card-action">...</div>
+  </div>

@@ -1,0 +1,37 @@
+{
+  "name": "novice-angular",
+  "description": "angular js 1.6.x utils",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "bin",
+    "dev"
+  ],
+  "keywords": [
+    "angular",
+    "novice",
+    "html",
+    "rest",
+    "view"
+  ],
+  "authors": [
+    "sbolingo <sbolingo@outlook.com>",
+    "demingongo"
+  ],
+  "dependencies": {
+    "angular": "1.6.x",
+    "jquery": "^3.1.1",
+    "angular-route": "^1.6.1",
+    "angular-animate": "^1.6.1",
+    "angular-cookies": "^1.6.1",
+    "ngstorage": "^0.3.11",
+    "d3": "^4.4.1",
+    "angular-resource": "^1.6.1",
+    "angular-2lyk-utils": "*"
+  },
+  "resolutions": {
+    "angular": ">=1.3.0",
+    "jquery": ">=2.1.1"
+  }
+}

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" ng-app="noviceApp">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="kisiwu">
+  <title>Novice Angular</title>
+
+  <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel="stylesheet" type="text/css" href="lib/css/novice-angular.css">
+
+  <script src="bower_components/jquery/dist/jquery.min.js" ></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <script src="bower_components/d3/d3.min.js" ></script>
+  <script src="bower_components/StickyTableHeaders/js/jquery.stickytableheaders.min.js" ></script>
+
+
+  <script src="bower_components/angular/angular.min.js" ></script>
+  <script src="bower_components/angular-route/angular-route.min.js" ></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js" ></script>
+  <script src="bower_components/angular-cookies/angular-cookies.min.js" ></script>
+  <script src="bower_components/ngstorage/ngStorage.min.js" ></script>
+  <script src="bower_components/angular-resource/angular-resource.min.js" ></script>
+
+  <script src="bower_components/angular-2lyk-utils/dist/js/angular-2lyk-utils.min.js" ></script>
+  <script src="bower_components/angular-2lyk-utils/dist/js/angular-2lyk-directives.min.js" ></script>
+
+  <!-- noviceRouter -->
+<!--
+  <script src="novice/lib/router/router.js"></script>
+
+  <script src="novice/lib/router/services.js"></script>
+  <script src="novice/lib/router/ResolveProvider.js"></script>
+  <script src="novice/lib/router/noviceRouterService.js"></script>
+
+  <script src="novice/lib/router/config.js"></script>
+  <script src="novice/lib/router/run.js"></script>
+-->
+  <!-- /noviceRouter -->
+
+  <!-- noviceServices -->
+<!--
+  <script src="novice/lib/services/services.js"></script>
+  <script src="novice/lib/services/noviceUtils.js"></script>
+-->
+  <!-- /noviceServices -->
+
+  <!-- noviceFilters -->
+<!--
+  <script src="novice/lib/filters/filters.js"></script>
+  <script src="novice/lib/filters/timeFormat.js"></script>
+-->
+  <!-- /noviceServices -->
+
+  <!--<script src="novice/lib/noviceApp.js"></script>-->
+
+  <script src="../dist/novice-angular.js"></script>
+
+  <script src="_app.js" ></script>
+
+
+  <style>
+
+  </style>
+
+ </head>
+ <body>
+
+<nav>
+  <ul>
+    <li><a href="{{$root.router.path('home2', null, '#!')}}">home</a></li>
+    <li><a href="{{$root.router.path('tuto', null, '#!')}}">tuto</a></li>
+    <li><a href="{{$root.router.path('tuto_finally', null, '#!')}}">tuto_finally</a></li>
+  </ul>
+</nav>
+<div id="main" class="col-sm-12" data-ng-view></div>
+
+<div>
+  {{ $root.__novice.generatedAt | timeFormat:'%A'}}
+</div>
+
+ </body>
+</html>

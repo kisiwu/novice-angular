@@ -1,0 +1,23 @@
+<div class="novice-list-xhr" style="height: 100%" class="col-sm-12">
+  <div class="novice-list-xhr-tools" class="col-sm-12">
+    <form ng-submit="doSearch(true)" class="col-sm-12" ng-hide="hideFilters">
+      <div class="form-group novice-search-form-group input-field col-sm-6">
+        <label>
+          Search
+        </label>
+        <input type="text" name="search" class="form-control" ng-model="search" />
+      </div>
+    </form>
+  </div>
+  <div style="height: {{tableHeight || 250}}px;" class="novice-list-xhr-table-container col-sm-12">
+    <novice-list
+      columns="columns"
+      sort-fn="sortMyList"
+      bottom-fn="loadMore"
+      buttons="myButtons"
+      query-search-fn="myQuerySearchFn"
+      ng-model="myList"
+      table-class="'table-hover table-striped'">
+    </novice-list>
+  </div>
+</div>

@@ -63,6 +63,12 @@ module.exports = function(grunt) {
 				'./dev/novice/lib/services/services.js',
 				'./dev/novice/lib/services/noviceUtils.js'
 			],
+      // directives
+			'./dist/components/directives.js': [
+				'./dev/novice/lib/directives/directives.js',
+				'./dev/novice/lib/directives/noviceList.js',
+        './dev/novice/lib/directives/noviceListXhr.js'
+			],
 			// router
             './dist/components/router.js': [
               './dev/novice/lib/router/router.js',
@@ -82,7 +88,7 @@ module.exports = function(grunt) {
 
   concat: {
 	noviceAngular: {
-        src: ['./dist/components/*.js'],
+        src: ['./dist/components/*[^min].js'],
         dest: './dist/novice-angular.js'
     }
   },
@@ -97,6 +103,11 @@ module.exports = function(grunt) {
     services: { //target
         src: ['./dist/components/services.js'],
         dest: './dist/components/services.min.js'
+    },
+  // directives
+    directives: { //target
+        src: ['./dist/components/directives.js'],
+        dest: './dist/components/directives.min.js'
     },
 	// router
 	router: { //target

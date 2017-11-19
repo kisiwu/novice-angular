@@ -2,6 +2,7 @@ angular.module('noviceServices', [
 
 ])
 
+
 angular.module('noviceServices')
 .factory("noviceUtils", ['$timeout', '$interval', function($timeout, $interval){
 

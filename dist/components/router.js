@@ -1,3 +1,7 @@
+/**
+ * @ngdoc module
+ * @module noviceRouter
+ */
 angular.module('noviceRouter', [
   'ngRoute',
   '2lykUtils',
@@ -6,6 +10,10 @@ angular.module('noviceRouter', [
   'nApp'
 ]);
 
+/**
+ * @ngdoc module
+ * @module noviceRouterServices
+ */
 angular.module('noviceRouterServices', [
   'ngRoute',
   '2lykUtils'

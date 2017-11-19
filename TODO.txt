@@ -1,0 +1,3 @@
+﻿tasks:
+- use 'jquery-table-fixer' in 2lykUtils instead of StickyHeader
+- find a scrollbar style

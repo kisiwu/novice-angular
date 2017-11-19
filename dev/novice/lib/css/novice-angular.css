@@ -1,0 +1,90 @@
+/**
+* GLOBAL
+*/
+.caret.caret-up {
+	border-top: none;
+	border-bottom: 4px solid #000000;
+}
+
+.darker-bg{
+	background-color: rgba(0,0,0,0.02);
+}
+.lighter-bg{
+	background-color: rgba(255,255,255,0.3);
+}
+
+
+/**
+* novice-list
+*/
+.list-container{
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: auto; /*hidden*/
+}
+.list-container th{
+  /*z-index: 1;*/
+  background-color: white;
+}
+.list-container .btn.btn-action{
+	margin-right: 5px;
+}
+
+/**
+* novice-list-xhr
+*/
+.novice-list-xhr-table-container, .novice-search-form-group{
+	padding-left: 0;
+}
+.novice-list-xhr-table-container{
+	padding-right: 0;
+}
+
+/**
+* custom scroll
+*/
+/*
+ *  STYLE 1
+ */
+/*.scroll-1::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+	border-radius: 10px;
+	background-color: #CCCCCC;
+}*/
+
+.scroll-1::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+.scroll-1::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+/*.scroll-1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #7986cb;
+	background-image: -webkit-linear-gradient(90deg,
+											  transparent,
+											  rgba(0, 0, 0, 0.4) 50%,
+											  transparent,
+											  transparent)
+}*/
+
+.scroll-1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #FFF;
+	background-image: -webkit-gradient(linear,
+									   40% 0%,
+									   75% 84%,
+									   from(#7986cb),
+									   to(#512da8),
+									   color-stop(.6,#e3f2fd))
+}

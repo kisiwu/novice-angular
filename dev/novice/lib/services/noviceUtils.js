@@ -1,3 +1,4 @@
+
 angular.module('noviceServices')
 .factory("noviceUtils", function($timeout, $interval){
 

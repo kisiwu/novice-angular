@@ -1,3 +1,7 @@
+/**
+ * @ngdoc module
+ * @module noviceApp
+ */
 angular.module('noviceApp', [
   '2lykUtils',
 
@@ -34,6 +38,16 @@ angular.module('noviceApp', [
    *   - d3
    */
   'noviceFilters',
+
+  /**
+   * directives:
+   *   - noviceList
+   *   - noviceListXhr
+   *
+   * dependencies:
+   *   - 2lykUtils
+   */
+  'noviceDirectives',
 
   'nApp'
 ]);

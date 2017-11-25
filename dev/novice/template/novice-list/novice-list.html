@@ -1,5 +1,10 @@
 <div lyk-stick-container class="novice-list list-container scroll-1" lyk-on-bottom="__do('bottomFn')" >
-<table lyk-stick stick-if="youCanStickTheHeader" ng-show="loaded" class="table header-fixed {{tableClass}}" ng-hide="hideList">
+<table lyk-stick
+  stick-if="youCanStickTheHeader"
+  stick-watch="rows"
+  ng-show="loaded"
+  class="table header-fixed {{tableClass}}"
+  ng-hide="hideList">
   <thead>
     <tr>
     <th ng-repeat="column in columns"

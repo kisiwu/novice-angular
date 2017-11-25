@@ -60,6 +60,7 @@ angular.module('nApp')
     {
       name: "Alert",
       class: "btn-warning btn-xs  yellow darken-2",
+      state: "warning",
       action: function(elem, i){
         lykConsole.dev(elem);
       }
@@ -67,6 +68,7 @@ angular.module('nApp')
     {
       name: "Delete",
       class: "btn-danger btn-xs red darken-2",
+      state: "danger",
       action: function(elem, i, data){
         lykConsole.dev(elem);
         data.some(function(el, idx){

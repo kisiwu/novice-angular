@@ -61,7 +61,8 @@ module.exports = function(grunt) {
 			// services
 			'./dist/components/services.js': [
 				'./dev/novice/lib/services/services.js',
-				'./dev/novice/lib/services/noviceUtils.js'
+				'./dev/novice/lib/services/noviceUtils.js',
+        './dev/novice/lib/services/noviceStorage.js'
 			],
       // directives
 			'./dist/components/directives.js': [

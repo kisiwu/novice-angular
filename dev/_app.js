@@ -1,4 +1,6 @@
-angular.module('nApp', []);
+angular.module('nApp', [
+  'noviceServices' // to use noviceServices providers
+]);
 
 angular.module('nApp').constant("NOVICE_ROUTES", [
   {
@@ -30,7 +32,10 @@ angular.module('nApp').constant("NOVICE_ROUTES", [
 
 angular.module('nApp')
 .config(
-  function($locationProvider, ResolveProvider, lykXhrProvider, lykConsoleProvider){
+  function($locationProvider,
+    ResolveProvider, lykXhrProvider, lykConsoleProvider, noviceStorageProvider){
+
+    noviceStorageProvider.setPrefix("_outerhaven_");
 
     lykConsoleProvider.setDev(true);
 
@@ -52,9 +57,13 @@ angular.module('nApp')
 
 angular.module('nApp')
 .controller("devCtrl",
-  function($scope, custom, lykConsole, lykPropertyAccess, noviceUtils, lykXhr){
+  function($scope, custom, lykConsole, lykPropertyAccess, noviceUtils, lykXhr,
+  noviceStorage, $localStorage){
 
     noviceUtils.onDestroy.cancelTimeouts($scope);
+
+    noviceStorage.set("something", 'its value')
+    lykConsole.debug(noviceStorage.getStorage());
 
     $scope.myButtons = [
     {

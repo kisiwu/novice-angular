@@ -23,6 +23,11 @@ angular.module('noviceServices')
           return $localStorage[storageName];
         }
 
+        function reset(){
+          delete $localStorage[storageName];
+          $localStorage[storageName] = {};
+        }
+
         function set(name, value){
           getStorage()[prefix+name] = value;
         }
@@ -31,10 +36,16 @@ angular.module('noviceServices')
           return getStorage()[prefix+name];
         }
 
+        function remove(name){
+          delete getStorage()[prefix+name];
+        }
+
         return {
           set: set,
           get: get,
-          getStorage: getStorage
+          remove: remove,
+          getStorage: getStorage,
+          reset: reset
         };
     };
 });

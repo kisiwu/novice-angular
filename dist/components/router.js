@@ -178,6 +178,10 @@ angular.module('noviceRouter').config(['NOVICE_ROUTES', '$routeProvider', 'Resol
     var baseUrl = route.baseUrl || "";
     var routes = route.routes;
     var name = route.name;
+    var rootName = name;
+
+    route.rootName = rootName;
+
     var doRoutes = false;
     if(!path){
       if(!(Array.isArray(routes) && routes.length > 0)){
@@ -206,6 +210,7 @@ angular.module('noviceRouter').config(['NOVICE_ROUTES', '$routeProvider', 'Resol
     routes.forEach(function(subRoute){
       var subPath = baseUrl + (subRoute.path || '');
       subRoute.name = subRoute.name || name;
+      subRoute.rootName = rootName;
       if(!subPath)
           return;
 
@@ -242,10 +247,15 @@ angular.module('noviceRouter').run(
           return;
         }
         $rootScope._routeName = NoviceRoute.name;
+        $rootScope._routeRootName = NoviceRoute.rootName;
         $rootScope._templateUrl = NoviceRoute.templateUrl;
         $rootScope._path = NoviceRoute.originalPath;
         $rootScope._controller = NoviceRoute.controller || '';
-        lykConsole.dev("[RUN]",$rootScope._routeName || '', $rootScope._path);
+        lykConsole.dev(
+          "[RUN]",
+          $rootScope._routeName || '',
+          $rootScope._path
+        );
         //console.log(NoviceRoute);
         //console.log(current);
         /*if(IOTRoute && IOTRoute.permissions && IOTRoute.name){

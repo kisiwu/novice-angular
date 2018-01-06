@@ -34,6 +34,10 @@ angular.module('noviceRouter').config(function(NOVICE_ROUTES, $routeProvider, Re
     var baseUrl = route.baseUrl || "";
     var routes = route.routes;
     var name = route.name;
+    var rootName = name;
+
+    route.rootName = rootName;
+
     var doRoutes = false;
     if(!path){
       if(!(Array.isArray(routes) && routes.length > 0)){
@@ -62,6 +66,7 @@ angular.module('noviceRouter').config(function(NOVICE_ROUTES, $routeProvider, Re
     routes.forEach(function(subRoute){
       var subPath = baseUrl + (subRoute.path || '');
       subRoute.name = subRoute.name || name;
+      subRoute.rootName = rootName;
       if(!subPath)
           return;
 

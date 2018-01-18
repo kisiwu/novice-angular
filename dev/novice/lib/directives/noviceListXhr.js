@@ -2,7 +2,13 @@ angular.module("noviceDirectives").
     directive('noviceListXhr', function(lykPropertyAccess, $timeout, lykXhr, lykConsole){
 
       return {
-      templateUrl: 'novice/template/novice-list/novice-list-xhr.html',
+      templateUrl: function(element, attrs) {
+        if(attrs.templateUrl){
+          return attrs.templateUrl;
+        }
+        // default template
+        return 'novice/template/novice-list/novice-list-xhr.html';
+      },
       transclude: true,
       scope: {
         columns: '=',

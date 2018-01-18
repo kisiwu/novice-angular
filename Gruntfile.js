@@ -79,6 +79,10 @@ module.exports = function(grunt) {
 			  './dev/novice/lib/router/config.js',
 			  './dev/novice/lib/router/run.js'
             ],
+    // templates
+    './dist/tpls/novice.tpls.js': [
+      './dev/novice/lib/templates/*.js'
+    ],
 			// noviceApp
 			'./dist/components/noviceApp.js': [
 				'./dev/novice/lib/noviceApp.js'
@@ -88,9 +92,13 @@ module.exports = function(grunt) {
   },
 
   concat: {
-	noviceAngular: {
-        src: ['./dist/components/*[^min].js'],
-        dest: './dist/novice-angular.js'
+    noviceAngular: {
+      src: ['./dist/components/*[^min].js'],
+      dest: './dist/novice-angular.js'
+    },
+    css: {
+      src: ['./dev/novice/lib/css/*.css'],
+      dest: './dist/novice-angular.css'
     }
   },
 
@@ -119,6 +127,11 @@ module.exports = function(grunt) {
 	noviceApp: { //target
         src: ['./dist/components/noviceApp.js'],
         dest: './dist/components/noviceApp.min.js'
+    },
+  // templates
+    templates: { //target
+        src: ['./dist/tpls/novice.tpls.js'],
+        dest: './dist/tpls/novice.tpls.min.js'
     },
 	// novice-angular
 	noviceAngular: { //target

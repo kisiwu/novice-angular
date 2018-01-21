@@ -13,10 +13,10 @@ angular.module("noviceDirectives").
       scope: {
         columns: '=',
         xhr: '<',
+        xhrParams: '<',
         parametersNames: '<',
         myButtons: '=?buttons',
         querySearchFn: '=?',
-
 
         //display
         hideFilters: '=?',
@@ -99,10 +99,10 @@ angular.module("noviceDirectives").
           params[paramsNames.order] = order;
           params[paramsNames.search] = encodeURIComponent(scope.search);
 
-          lykXhr.execute(scope.xhr, {params: params}).then(
+          lykXhr.execute(scope.xhr, {params: params}, scope.xhrParams).then(
             function(data){
               if(!data){
-                return lykConsole.dev("No data");
+                return lykConsole.dev("[noviceListXhr]","No data");
               }
               if(angular.isArray(data)){
                 if(makeNewList){
@@ -111,10 +111,11 @@ angular.module("noviceDirectives").
                 else{
                   scope.myList = scope.myList.concat(data);
                 }
+                lykConsole.dev("[noviceListXhr]","size:", scope.myList.length);
               }
               else if(angular.isObject(data)){
                 if(angular.isArray(data.data)){
-                  return lykConsole.dev("No data");
+                  return lykConsole.dev("[noviceListXhr]","No data");
                 }
                 if(makeNewList){
                   scope.myList = data.data;

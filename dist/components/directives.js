@@ -176,7 +176,14 @@ angular.module("noviceDirectives").
 
           scope.columns = scope.columns
           .filter(function(column){
-            return (angular.isString(column) && column.trim() != "") || (column && angular.isObject(column) && typeof column.type === 'undefined');
+            return (angular.isString(column) && column.trim() != "") ||
+              (
+                column && angular.isObject(column)
+                && (
+                  typeof column.type === 'undefined' ||
+                  (angular.isString(column.type) && ["actions"].indexOf(column.type) == -1)
+                )
+              );
           })
           .map(function(column){
               if(angular.isString(column)){

@@ -324,14 +324,19 @@ angular.module("noviceDirectives").
                 lykConsole.dev("[noviceListXhr]","size:", scope.myList.length);
               }
               else if(angular.isObject(data)){
-                if(angular.isArray(data.data)){
+                var arrayProp = "data";
+                if(angular.isArray(data["docs"]) && !angular.isArray(data["data"])){
+                  arrayProp = "docs";
+                }
+                if(!angular.isArray(data[arrayProp])){
                   return lykConsole.dev("[noviceListXhr]","No data");
                 }
+
                 if(makeNewList){
-                  scope.myList = data.data;
+                  scope.myList = data[arrayProp];
                 }
                 else{
-                  scope.myList = scope.myList.concat(data.data);
+                  scope.myList = scope.myList.concat(data[arrayProp]);
                 }
                 nbPages = angular.isNumber(data.pages) ? data.pages : nbPages;
               }

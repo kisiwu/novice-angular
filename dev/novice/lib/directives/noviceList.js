@@ -100,6 +100,9 @@ angular.module("noviceDirectives").
           return retour;
         }
         scope.getType = function(item, key, column){
+          if(column.type)
+            return column.type;
+
           var type = lykPropertyAccess.getType(item, key);
           if(type == 'undefined' && column &&  column.alternative){
             type = lykPropertyAccess.getType(item, column.alternative);
@@ -175,6 +178,7 @@ angular.module("noviceDirectives").
               column.sortable = column.sortable || false;
               column.filter = column.filter || undefined;
               column.class = column.class || "";
+              column.type = column.type || undefined;
 
               /** TODO **/
               column.inner = angular.isArray(column.inner) ? column.inner : undefined;

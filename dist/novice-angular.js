@@ -21,26 +21,26 @@ angular.module("noviceDirectives").
       transclude: true,
       require: 'ngModel',
       scope: {
-        columns: '=', //[string|object] //if object => {id,name,sortable}
+        pColumns: '=columns', //[string|object] //if object => {id,name,sortable}
         model: '=ngModel', //[object]
-        selectFn: '=?', //function to execute when a row has been selected, (item)
-        searchFn: '=?', //function to execute when a search has been triggered, (word)
+        pSelectFn: '=?selectFn', //function to execute when a row has been selected, (item)
+        pSearchFn: '=?searchFn', //function to execute when a search has been triggered, (word)
         sortFn: '=?', //function to execute when a sort has been triggered, (column._id, true | false (asc or desc))
         bottomFn: '=?', //function to execute when we reached the bottom
         querySearchFn: '=?',
         defaultSort: '@',
         defaultOrder: '@',
         hideList: '=?',
-        scrollFn: '=?',
 
-        buttons: '=?',
+        pButtons: '=?buttons',
 
         tableClass: '=?'
       },
       link: function(scope, element, attrs, ngModel){
 
+        lykConsole.dev("[noviceList]");
+
         scope.__do = function(){
-          //console.error("myPagingFunction");
           var method = Array.prototype.shift.call(arguments);
           var args = arguments;
           if(scope[method]){
@@ -82,7 +82,7 @@ angular.module("noviceDirectives").
             }
           }
           sort = id;
-          if(scope.sortFn){
+          if(typeof scope.sortFn === 'function'){
             scope.sortFn(sort, scope.order);
             return;
           }
@@ -118,19 +118,28 @@ angular.module("noviceDirectives").
           return type;
         }
 
-        function selectFn(){
-          console.info("[noviceList]", "selectFn");
+        scope.selectFn = selectFn;
+        scope.searchFn = searchFn;
+        scope.actionFn = actionFn;
+        function selectFn(elem){
+          lykConsole.dev("[noviceList]", "selectFn");
+          if(typeof scope.pSelectFn === 'function'){
+            scope.pSelectFn(elem);
+          }
         }
-        function searchFn(){
-          console.info("[noviceList]", "searchFn");
+        function searchFn(tag){
+          lykConsole.dev("[noviceList]", "searchFn");
+          if(typeof scope.pSearchFn === 'function'){
+            scope.pSearchFn(tag);
+          }
         }
-
         function actionFn(button, elem, i, data){
           lykConsole.dev("[noviceList]","actionFn");
           if(button && angular.isObject(button) && typeof button.action === 'function'){
             button.action(elem, i, data);
           }
         }
+
         function getValue(item, key, column, noInner){
           var returnValue;
           var value = lykPropertyAccess.async.getValue(item, key);
@@ -155,26 +164,39 @@ angular.module("noviceDirectives").
           }
           return returnValue;
         }
-        scope.searchFn = scope.searchFn || searchFn;
-        scope.selectFn = scope.selectFn || selectFn;
-        scope.actionFn = actionFn;
 
-        onInit();
+        // on init
+        scope.defaultSort = scope.defaultSort || "";
+        if(scope.defaultSort){
+          scope.setSort(scope.defaultSort, true);
+        }
 
-        function onInit(){
-        //  console.info("listDirective");
-          scope.columns = scope.columns || [];
-          scope.$watchCollection("model", function(newValue) {
-            scope.rows = newValue || [];
-          }, true);
+        scope.loaded = true;
 
-          scope.actionsColumn = scope.columns
+        scope.$watchCollection("pButtons", function(newValue) {
+          scope.buttons = angular.isArray(newValue) ? newValue : [];
+        }, true);
+
+        scope.$watchCollection("model", function(newValue) {
+          scope.rows = newValue;
+        }, true);
+
+        scope.$watchCollection("pColumns", function(newValue) {
+
+          if(!angular.isArray(newValue)){
+            scope.columns = [];
+            return;
+          }
+
+          var rawColumns = angular.copy(newValue);
+
+          scope.actionsColumn = rawColumns
           .filter(function(column){
             return (column && angular.isObject(column) && column.type === "actions");
           });
           scope.actionsColumn = scope.actionsColumn.length > 0 ? scope.actionsColumn[0] : undefined;
 
-          scope.columns = scope.columns
+          scope.columns = rawColumns
           .filter(function(column){
             return (angular.isString(column) && column.trim() != "") ||
               (
@@ -201,21 +223,11 @@ angular.module("noviceDirectives").
               /** /TODO **/
               return column;
           });
-          //console.info(scope.columns);
-          scope.searchFn = scope.searchFn || searchFn;
-          scope.selectFn = scope.selectFn || selectFn;
-          scope.actionFn = actionFn;
-          scope.defaultSort = scope.defaultSort || "";
-          if(scope.defaultSort){
-            scope.setSort(scope.defaultSort, true);
-          }
 
-          scope.buttons = angular.isArray(scope.buttons) ? scope.buttons : [];
+        }, true);
 
-          scope.loaded = true;
-          //console.info("loaded");
-        }
-      },
+      }
+      // END - link
     };
     }]);
 

@@ -28,7 +28,7 @@ angular.module("noviceDirectives").
         var limit = 50;
         var page = 0;
         var sort = "";
-        var order = "asc";
+        var order = "";
         var nbPages = 1;
 
         var paramsNames = {
@@ -92,12 +92,19 @@ angular.module("noviceDirectives").
 
         function executeXhr(makeNewList){
           var params = {};
-
           params[paramsNames.limit] = limit;
           params[paramsNames.page] = page;
           params[paramsNames.sort] = sort;
           params[paramsNames.order] = order;
-          params[paramsNames.search] = encodeURIComponent(scope.search);
+          params[paramsNames.search] = scope.search ? encodeURIComponent(scope.search) : undefined;
+
+          ['limit','page','sort','order','search'].forEach(
+            function(p){
+              if(typeof params[paramsNames[p]] === "undefined" || params[paramsNames[p]] === ""){
+                delete params[paramsNames[p]];
+              }
+            }
+          );
 
           lykXhr.execute(scope.xhr, {params: params}, scope.xhrParams).then(
             function(data){

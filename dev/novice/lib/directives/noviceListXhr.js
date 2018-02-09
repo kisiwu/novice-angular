@@ -17,6 +17,7 @@ angular.module("noviceDirectives").
         parametersNames: '<',
         myButtons: '=?buttons',
         querySearchFn: '=?',
+        pSelectFn: '=?selectFn',
 
         //display
         hideFilters: '=?',

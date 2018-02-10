@@ -26,7 +26,10 @@ angular.module("noviceDirectives").
 
         pButtons: '=?buttons',
 
-        tableClass: '=?'
+        tableClass: '=?',
+
+        //style
+        tableHeight: '=?'
       },
       link: function(scope, element, attrs, ngModel){
 

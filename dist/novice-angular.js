@@ -34,7 +34,10 @@ angular.module("noviceDirectives").
 
         pButtons: '=?buttons',
 
-        tableClass: '=?'
+        tableClass: '=?',
+
+        //style
+        tableHeight: '=?'
       },
       link: function(scope, element, attrs, ngModel){
 
@@ -249,14 +252,14 @@ angular.module("noviceDirectives").
         xhrParams: '<',
         parametersNames: '<',
         myButtons: '=?buttons',
-        querySearchFn: '=?',
-        pSelectFn: '=?selectFn',
 
         //display
         hideFilters: '=?',
 
-        //style
-        tableHeight: '=?',
+        // (noviceList params)
+        querySearchFn: '=?',
+        pSelectFn: '=?selectFn',
+        tableHeight: '=?'
       },
       link: function(scope, element, attrs){
         var limit = 50;

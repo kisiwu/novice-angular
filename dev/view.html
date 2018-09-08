@@ -14,6 +14,21 @@
 </novice-list>
 </div>-->
 
+<div class="row">
+  <form name="form" novalidate class="col s12">
+    <div class="row">
+      <novice-input-list 
+        class="col s3" 
+        name="answers" 
+        ng-model="item['answers']" 
+        options="{allowEmpty: false, required: true, disallowDuplicates: true}"
+        template-url="novice/template/novice-inputs/novice-input-list.html"
+        >
+      </novice-input-list>
+    </div>
+  </form>
+</div>
+
 <div ng-if="$root._controller == 'devCtrl'" style="border: 2px solid red" class="col-sm-12">
   <!-- sort-fn="sortMyList" bottom-fn="myListOnBottom"  -->
 
@@ -29,7 +44,7 @@
 </div>
 
 
-<div class="card sticky-action col-sm-4 col-md-3">
+<div class="card sticky-action col-sm-4 col-md-3"> 
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" src="https://s-media-cache-ak0.pinimg.com/736x/f3/4f/73/f34f732fccc0b79a3ec623fd747f2f66.jpg">
     </div>

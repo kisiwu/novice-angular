@@ -68,7 +68,8 @@ module.exports = function(grunt) {
 			'./dist/components/directives.js': [
 				'./dev/novice/lib/directives/directives.js',
 				'./dev/novice/lib/directives/noviceList.js',
-        './dev/novice/lib/directives/noviceListXhr.js'
+        './dev/novice/lib/directives/noviceListXhr.js',
+        './dev/novice/lib/directives/noviceInputList.js'
 			],
 			// router
             './dist/components/router.js': [

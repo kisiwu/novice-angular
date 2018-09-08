@@ -1,4 +1,5 @@
 angular.module('nApp', [
+  //'novice.tpls', // to preload templates
   'noviceServices' // to use noviceServices providers
 ]);
 

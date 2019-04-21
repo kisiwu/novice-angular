@@ -16,7 +16,8 @@
 
 <div class="row">
   <form name="form" novalidate class="col s12">
-    <div class="row">
+    <div class="row col-sm-offset-2">
+      <!--
       <novice-input-list 
         class="col s3" 
         name="answers" 
@@ -25,13 +26,21 @@
         template-url="novice/template/novice-inputs/novice-input-list.html"
         >
       </novice-input-list>
+    -->
+    <list-value
+        class="col s3" 
+        name="test" 
+        ng-model="item['test']" 
+        options="{allowEmpty: false, required: true, disallowDuplicates: true, keys: ['one', 'two', 'three', 'four']}"
+        >
+      </list-value>
     </div>
   </form>
 </div>
 
 <div ng-if="$root._controller == 'devCtrl'" style="border: 2px solid red" class="col-sm-12">
   <!-- sort-fn="sortMyList" bottom-fn="myListOnBottom"  -->
-
+<!--
 <novice-list-xhr
   xhr="'iotfactory:countries'"
   columns="countriesCols"
@@ -39,11 +48,13 @@
   hide-filters="false"
   query-search-fn="querySearchFn"
   table-height="300"
-  ><!-- xhr-sort -->
+  get-manual-handler="getManualHandler"
+  >
 </novice-list-xhr>
+-->
 </div>
 
-
+<!--
 <div class="card sticky-action col-sm-4 col-md-3"> 
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" src="https://s-media-cache-ak0.pinimg.com/736x/f3/4f/73/f34f732fccc0b79a3ec623fd747f2f66.jpg">
@@ -72,3 +83,4 @@
     </div>
     <div class="card-action">...</div>
   </div>
+-->

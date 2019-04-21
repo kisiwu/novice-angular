@@ -59,12 +59,26 @@ angular.module('nApp')
 angular.module('nApp')
 .controller("devCtrl",
   function($scope, custom, lykConsole, lykPropertyAccess, noviceUtils, lykXhr,
-  noviceStorage, $localStorage){
+  noviceStorage, $localStorage, $timeout){
 
     noviceUtils.onDestroy.cancelTimeouts($scope);
 
     noviceStorage.set("something", 'its value')
     lykConsole.debug(noviceStorage.getStorage());
+
+
+    var listHandler;
+
+    $scope.timeouts = {};
+
+    $scope.getManualHandler = function(h){
+      listHandler = h;
+      $scope.timeouts = $timeout(function(){
+        listHandler(function(list){
+          list[1] = ({_id: "AAA", name: "aaa great A"})
+        });
+      }, 5000);
+    }
 
     $scope.myButtons = [
     {

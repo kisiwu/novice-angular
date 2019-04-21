@@ -24,7 +24,11 @@ angular.module("noviceDirectives").
         defaultOrder: '@',
         hideList: '=?',
 
+        // boolean
         pButtons: '=?buttons',
+
+        pCheckboxes: '=?checkboxes',
+        pMulti: '=?multi',
 
         tableClass: '=?',
 

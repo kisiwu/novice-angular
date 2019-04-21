@@ -1,0 +1,12 @@
+<div ng-repeat="(i,m) in vm.model" class="input-field novice-input-list">
+    <label>{{m.id}}</label>
+    <input ng-model="m.value" ng-class="(!vm.options.allowEmpty && !m.value) || (vm.duplicates.indexOf(i) > -1) ? 'invalid':'valid'" />
+    <i class="material-icons prefix" ng-click="vm.remove(i)">indeterminate_check_box</i>
+</div>
+<div class="input-field novice-input-list" ng-if="vm.currentKeys.length && !(vm.options.max && vm.options.max <= vm.model.length)">
+        <select ng-model="vm.newValue.id">
+            <option ng-repeat="k in vm.currentKeys" ng-value="k">{{k}}</option>
+        </select>
+        <input ng-model="vm.newValue.value" ng-class="{'invalid': vm.options.required && vm.touched && !vm.model.length}" />
+        <i class="material-icons prefix"  ng-click="vm.add()">add_box</i>
+</div>

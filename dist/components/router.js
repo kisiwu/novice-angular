@@ -44,7 +44,7 @@ angular.module('noviceRouterServices').provider('Resolve', function ResolveProvi
 });
 
 angular.module('noviceRouterServices')
-.factory("noviceRouterService", ['$route', 'lykConsole', function($route, lykConsole){
+.factory("noviceRouterService", ['$route', '$location', 'lykConsole', function($route, $location, lykConsole){
 
   var routes = {};
 
@@ -137,8 +137,13 @@ angular.module('noviceRouterServices')
     return buildPath;
   }
 
+  function goTo(name, params, absolute){
+    $location.path(path(name, params, absolute))
+  }
+
   return {
-    path: path
+    path: path,
+    goTo: goTo
   }
 }]);
 

@@ -26,6 +26,15 @@ angular.module('novice/template/novice-list/novice-list.html', []).run(['$templa
       "ng-hide=\"hideList\">"+
       "<thead>"+
         "<tr>"+
+        "<th ng-if=\"pCheckboxes\""+
+            ">"+
+          "<label>"+
+          "<input type=\"checkbox\""+ 
+                "class=\"check-one\""+ 
+                "ng-click=\"checkAll()\" />"+
+          "<span></span>"+
+          "</label>"+
+        "</th>"+
         "<th ng-repeat=\"column in columns\""+
             "lyk-ng-repeat-listen-to=\"'last'\""+
             "lyk-ng-repeat-do=\"setYouCanStickTheHeader()\""+
@@ -45,6 +54,14 @@ angular.module('novice/template/novice-list/novice-list.html', []).run(['$templa
         "<tr ng-repeat=\"elem in rows | filter: querySearchFn | orderBy:sort:reverse\""+
             "ng-click=\"__do('selectFn', elem, true); activeRow(elem);\""+
             "ng-class=\"{'active': isActiveRow(elem)}\">"+
+          "<td ng-if=\"pCheckboxes\""+
+              ">"+
+            "<label>"+
+            "<input type=\"checkbox\""+ 
+                "class=\"check-one\" />"+
+            "<span></span>"+
+            "</label>"+
+          "</td>"+
           "<td ng-repeat=\"column in columns\" class=\"{{column.class}}\">"+
               "<span ng-if=\"getType(elem, column.id, column) == 'array'\" ng-repeat=\"tag in getArray(elem, column.id, column)\">"+
                 "<span class=\"tag\" ng-click=\"__do('searchFn', tag)\">{{tag}}</span>"+

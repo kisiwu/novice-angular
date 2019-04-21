@@ -1,5 +1,5 @@
 angular.module('noviceRouterServices')
-.factory("noviceRouterService", function($route, lykConsole){
+.factory("noviceRouterService", function($route, $location, lykConsole){
 
   var routes = {};
 
@@ -92,7 +92,12 @@ angular.module('noviceRouterServices')
     return buildPath;
   }
 
+  function goTo(name, params, absolute){
+    $location.path(path(name, params, absolute))
+  }
+
   return {
-    path: path
+    path: path,
+    goTo: goTo
   }
 });

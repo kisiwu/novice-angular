@@ -32,7 +32,11 @@ angular.module("noviceDirectives").
         defaultOrder: '@',
         hideList: '=?',
 
+        // boolean
         pButtons: '=?buttons',
+
+        pCheckboxes: '=?checkboxes',
+        pMulti: '=?multi',
 
         tableClass: '=?',
 
@@ -259,7 +263,9 @@ angular.module("noviceDirectives").
         // (noviceList params)
         querySearchFn: '=?',
         pSelectFn: '=?selectFn',
-        tableHeight: '=?'
+        tableHeight: '=?',
+
+        getManualHandler: '<?'
       },
       link: function(scope, element, attrs){
         var limit = 50;
@@ -380,6 +386,15 @@ angular.module("noviceDirectives").
         }
 
         executeXhr();
+
+        if(angular.isFunction(scope.getManualHandler)){
+          scope.getManualHandler(
+            function manualHandler(fn){
+              if(angular.isFunction(fn))
+                fn(scope.myList);
+            }
+          );
+        }
 
       },
     };
@@ -628,7 +643,7 @@ angular.module('noviceRouterServices').provider('Resolve', function ResolveProvi
 });
 
 angular.module('noviceRouterServices')
-.factory("noviceRouterService", ['$route', 'lykConsole', function($route, lykConsole){
+.factory("noviceRouterService", ['$route', '$location', 'lykConsole', function($route, $location, lykConsole){
 
   var routes = {};
 
@@ -721,8 +736,13 @@ angular.module('noviceRouterServices')
     return buildPath;
   }
 
+  function goTo(name, params, absolute){
+    $location.path(path(name, params, absolute))
+  }
+
   return {
-    path: path
+    path: path,
+    goTo: goTo
   }
 }]);
 
